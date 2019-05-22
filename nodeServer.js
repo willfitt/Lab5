@@ -28,11 +28,6 @@ let server = net.createServer(client => {
         stream.write(message);
         broadcast(clientName, message);
         clientList.splice(clientList.indexOf(clientName), 1);
-        if (clientList.length === 0) {
-            stream.on('end', () => {
-                console.log('No more users');
-            });
-        }
     });
 
     client.on('error', (e) => {
